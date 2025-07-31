@@ -4,9 +4,13 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/ChatApp/',
+  base: process.env.NODE_ENV === 'production' ? '/ChatApp/' : '/',
   plugins: [
     react(),
     tailwindcss()
   ],
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  }
 })
